@@ -7,7 +7,10 @@ export interface Patient {
   attachments?: any[];
   availablePriorities?: any[];
   biohazard?: boolean;
-  birthDate?: any;
+  birthDate?: {
+    dateTime: string;
+    formattedDate: string;
+  };
   birthYear?: number;
   chronicDiagnosis?: any[];
   code?: number;
@@ -28,7 +31,7 @@ export interface Patient {
   hasOrders?: boolean;
   idMatch?: string;
   ids?: any[];
-  idsObject?: { [key: number]: string };
+  idsObject?: {[key: number]: string};
   inactive?: boolean;
   inactiveSince?: any;
   isActive?: any;
@@ -37,7 +40,7 @@ export interface Patient {
   lastName?: string;
   medications?: any[];
   middleName?: string;
-  originCountry?: { code?: number; name?: string };
+  originCountry?: {code?: number; name?: string};
   paymentMethods?: any[];
   paymentMethodsObject?: any;
   physician?: any;

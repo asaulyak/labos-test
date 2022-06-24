@@ -3,6 +3,7 @@ const packageJson = require("../../package.json");
 export const environment = {
   appName: "STMS test task",
   envName: "TEST",
+  apiUrl: 'https://api.mocki.io/v2',
   production: false,
   test: true,
   i18nPrefix: "",

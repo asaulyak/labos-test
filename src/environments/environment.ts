@@ -9,6 +9,7 @@ export const environment = {
   appName: "STMS test task",
   envName: "DEV",
   production: false,
+  apiUrl: 'https://api.mocki.io/v2',
   test: false,
   i18nPrefix: "",
   versions: {
