@@ -41,6 +41,7 @@ import {
   faWindowMaximize,
   faStream,
   faBook,
+  faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import {faMediumM, faGithub} from '@fortawesome/free-brands-svg-icons';
 
@@ -134,6 +135,7 @@ export class SharedModule {
       faWindowMaximize,
       faStream,
       faBook,
+      faHeart,
     );
   }
 }

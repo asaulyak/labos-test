@@ -5,12 +5,12 @@ export interface PatientsState {
   patients: Patient[];
   count: number;
   error: Error | HttpErrorResponse | null;
-  status: PatientsRenderingStatus;
+  status: PatientsAsyncReadyStatus;
 }
 
-export enum PatientsRenderingStatus {
+export enum PatientsAsyncReadyStatus {
+  Idle = 'idle',
   Loading = 'loading',
   Success = 'success',
   Error = 'error',
-  Idle = 'idle',
 }

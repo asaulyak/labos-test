@@ -12,11 +12,17 @@ import {settingsReducer} from './settings/settings.reducer';
 import {SettingsState} from './settings/settings.model';
 import {PatientsState} from './patients/patients.model';
 import {patientsReducer} from './patients/patients.reducer';
+import {FavoritesState} from './favorites/favorites.model';
+import {favoritesReducer} from './favorites/favorites.reducer';
+import {ordersReducer} from './orders/orders.reducer';
+import { OrdersState } from './orders/orders.model';
 
 export const reducers: ActionReducerMap<AppState> = {
   auth: authReducer,
   settings: settingsReducer,
   patients: patientsReducer,
+  orders: ordersReducer,
+  patientsFavorite: favoritesReducer,
   router: routerReducer,
 };
 
@@ -34,11 +40,17 @@ export const selectSettingsState = createFeatureSelector<AppState, SettingsState
 
 export const selectRouterState = createFeatureSelector<AppState, RouterReducerState<RouterStateUrl>>('router');
 
-export const selectPatientsState$ = createFeatureSelector<AppState, PatientsState>('patients');
+export const selectPatientsState = createFeatureSelector<AppState, PatientsState>('patients');
+
+export const selectOrdersState = createFeatureSelector<AppState, OrdersState>('orders');
+
+export const selectPatientsFavoriteState = createFeatureSelector<AppState, FavoritesState>('patientsFavorite');
 
 export interface AppState {
   auth: AuthState;
   settings: SettingsState;
   patients: PatientsState;
+  orders: OrdersState;
+  patientsFavorite: FavoritesState;
   router: RouterReducerState<RouterStateUrl>;
 }

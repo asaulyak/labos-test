@@ -8,7 +8,7 @@ import {environment} from '../../../environments/environment';
 export class PatientsService {
   constructor(private http: HttpClient) {}
 
-  getPatients(): Observable<PatientResponse> {
+  getAll(): Observable<PatientResponse> {
     return this.http.get<PatientResponse>(`${environment.apiUrl}/51597ef3`);
   }
 }

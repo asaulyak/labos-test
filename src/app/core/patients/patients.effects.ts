@@ -20,7 +20,7 @@ export class PatientsEffects {
       ofType(actionPatientsLoadPatients),
 
       switchMap(() =>
-        this.patientsService.getPatients().pipe(
+        this.patientsService.getAll().pipe(
           map(response => actionPatientsLoadPatientsSuccess({count: response.count, patients: response.patient})),
           catchError(error =>
             of(

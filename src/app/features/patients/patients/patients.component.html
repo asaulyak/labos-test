@@ -9,30 +9,39 @@
 
     <div class="content">
       <ng-container *ngIf="patientsRenderingStatus$ | async as status">
-        <div *ngIf="status === patientsRenderingStatuses.Loading" class="loader">
+        <div *ngIf="status === asyncReadyStatuses.Loading" class="loader">
           <mat-spinner></mat-spinner>
         </div>
 
-        <ng-container *ngIf="status !== patientsRenderingStatuses.Idle && status !== patientsRenderingStatuses.Loading">
+        <ng-container *ngIf="status !== asyncReadyStatuses.Idle && status !== asyncReadyStatuses.Loading">
           <table mat-table [dataSource]="patients$" class="mat-elevation-z8">
             <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef>Name</th>
+              <th mat-header-cell *matHeaderCellDef>{{ 'stms.orders.patients.name' | translate }}</th>
               <td mat-cell *matCellDef="let element">{{ element.fullName | orDefault }}</td>
             </ng-container>
 
             <ng-container matColumnDef="code">
-              <th mat-header-cell *matHeaderCellDef>Code</th>
+              <th mat-header-cell *matHeaderCellDef>{{ 'stms.orders.patients.code' | translate }}</th>
               <td mat-cell *matCellDef="let element">{{ element.code | orDefault }}</td>
             </ng-container>
 
             <ng-container matColumnDef="age">
-              <th mat-header-cell *matHeaderCellDef>Age</th>
+              <th mat-header-cell *matHeaderCellDef>{{ 'stms.orders.patients.age' | translate }}</th>
               <td mat-cell *matCellDef="let element">{{ element.birthDate?.dateTime | age }}</td>
             </ng-container>
 
             <ng-container matColumnDef="active">
-              <th mat-header-cell *matHeaderCellDef>Active</th>
+              <th mat-header-cell *matHeaderCellDef>{{ 'stms.orders.patients.active' | translate }}</th>
               <td mat-cell *matCellDef="let element">{{ !element.inactive | orDefault }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>{{ 'stms.orders.patients.actions' | translate }}</th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-mini-fab color="accent">
+                  <mat-icon><fa-icon icon="heart" color="accent"></fa-icon></mat-icon>
+                </button>
+              </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="columns"></tr>

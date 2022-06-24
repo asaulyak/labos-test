@@ -11,5 +11,5 @@ export const actionPatientsLoadPatientsSuccess = createAction(
 
 export const actionPatientsLoadPatientsFailure = createAction(
   '[Patients] Load Patients Failure',
-  props<{error: Error | HttpErrorResponse}>(), // TODO: Set proper type
+  props<{error: Error | HttpErrorResponse}>(),
 );

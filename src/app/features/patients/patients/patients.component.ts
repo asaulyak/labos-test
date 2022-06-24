@@ -5,7 +5,8 @@ import {Store} from '@ngrx/store';
 import {State} from '../../../core/settings/settings.model';
 import {selectPatients, selectPatientsStatus} from '../../../core/patients/patients.selectors';
 import {actionPatientsLoadPatients} from '../../../core/patients/patients.actions';
-import {PatientsRenderingStatus} from '../../../core/patients/patients.model';
+import {Patient} from '../../../shared/models/patient.model';
+import {OrdersAsyncReadyStatus} from '../../../core/orders/orders.model';
 
 @Component({
   selector: 'st-patients',
@@ -16,18 +17,19 @@ import {PatientsRenderingStatus} from '../../../core/patients/patients.model';
 export class PatientsComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
-  columns = ['name', 'code', 'age', 'active'];
+  columns = ['name', 'code', 'age', 'active', 'actions'];
+  asyncReadyStatuses = OrdersAsyncReadyStatus;
+
   patients$ = this.store.select(selectPatients);
   patientsRenderingStatus$ = this.store.select(selectPatientsStatus);
-  patientsRenderingStatuses = PatientsRenderingStatus
 
   constructor(private store: Store<State>) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onGetPatientsClick() {
     this.store.dispatch(actionPatientsLoadPatients());
-
   }
+
+  onAddToFavoriteClick(patient: Patient) {}
 }

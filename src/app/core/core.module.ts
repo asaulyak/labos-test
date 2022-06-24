@@ -39,6 +39,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {faCog, faBars, faRocket, faPowerOff, faUserCircle, faPlayCircle} from '@fortawesome/free-solid-svg-icons';
 import {faGithub, faMediumM, faTwitter, faInstagram, faYoutube} from '@fortawesome/free-brands-svg-icons';
 import {PatientsEffects} from './patients/patients.effects';
+import {OrdersEffects} from './orders/orders.effects';
 
 export {
   TitleService,
@@ -84,7 +85,7 @@ export function httpLoaderFactory(http: HttpClient) {
     // ngrx
     StoreModule.forRoot(reducers, {metaReducers}),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([AuthEffects, SettingsEffects, PatientsEffects]),
+    EffectsModule.forRoot([AuthEffects, SettingsEffects, PatientsEffects, OrdersEffects]),
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
