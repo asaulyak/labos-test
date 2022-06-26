@@ -1,0 +1,56 @@
+<div class="container">
+  <div rtl>
+    <h1 class="main-heading">{{ 'stms.favorites.title' | translate }}</h1>
+    <div class="actions">
+      <a mat-raised-button class="actions-main" color="primary" (click)="onGetFavoritesClick()">
+        {{ 'stms.favorites.get-favorites' | translate }}
+      </a>
+
+      <mat-form-field appearance="standard">
+        <input
+          matInput
+          [placeholder]="'stms.favorites.filter' | translate"
+          type="text"
+          (input)="onFilterQueryChange($event)"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="content">
+      <ng-container *ngIf="favoriteAsyncStatus$ | async as status">
+        <div *ngIf="status === asyncReadyStatuses.Loading" class="loader">
+          <mat-spinner></mat-spinner>
+        </div>
+
+        <ng-container *ngIf="status !== asyncReadyStatuses.Idle && status !== asyncReadyStatuses.Loading">
+          <table mat-table [dataSource]="favorites$" class="mat-elevation-z8">
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef>{{ 'stms.favorites.grid.type' | translate }}</th>
+              <td mat-cell *matCellDef="let element">{{ element.entityType }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>{{ 'stms.favorites.grid.name' | translate }}</th>
+              <td mat-cell *matCellDef="let element">{{ element | favoritesEntityName }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>{{ 'stms.favorites.grid.actions' | translate }}</th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-mini-fab color="accent" (click)="onRemoveFromFavoritesClick(element)">
+                  <mat-icon><fa-icon icon="trash" color="accent"></fa-icon></mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columns"></tr>
+            <tr mat-row *matRowDef="let row; columns: columns"></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" [attr.colspan]="columns.length">No records to display</td>
+            </tr>
+          </table>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>

@@ -37,7 +37,7 @@
               <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef>{{ 'stms.orders.grid.actions' | translate }}</th>
                 <td mat-cell *matCellDef="let element">
-                  <button mat-mini-fab color="accent">
+                  <button mat-mini-fab color="accent" (click)="onAddToFavoritesClick(element)">
                     <mat-icon><fa-icon icon="heart" color="accent"></fa-icon></mat-icon>
                   </button>
                 </td>

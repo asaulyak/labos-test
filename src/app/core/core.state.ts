@@ -22,7 +22,7 @@ export const reducers: ActionReducerMap<AppState> = {
   settings: settingsReducer,
   patients: patientsReducer,
   orders: ordersReducer,
-  patientsFavorite: favoritesReducer,
+  favorites: favoritesReducer,
   router: routerReducer,
 };
 
@@ -44,13 +44,13 @@ export const selectPatientsState = createFeatureSelector<AppState, PatientsState
 
 export const selectOrdersState = createFeatureSelector<AppState, OrdersState>('orders');
 
-export const selectPatientsFavoriteState = createFeatureSelector<AppState, FavoritesState>('patientsFavorite');
+export const selectFavoritesState = createFeatureSelector<AppState, FavoritesState>('favorites');
 
 export interface AppState {
   auth: AuthState;
   settings: SettingsState;
   patients: PatientsState;
   orders: OrdersState;
-  patientsFavorite: FavoritesState;
+  favorites: FavoritesState;
   router: RouterReducerState<RouterStateUrl>;
 }

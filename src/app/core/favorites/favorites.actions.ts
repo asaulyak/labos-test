@@ -1,7 +1,22 @@
 import {createAction, props} from '@ngrx/store';
-import {Order} from '../../shared/models/order.model';
-import {Patient} from '../../shared/models/patient.model';
+import {Favorite} from '../../shared/models/favorite.model';
+import {HttpErrorResponse} from '@angular/common/http';
 
-export const actionPatientsFavoriteAdd = createAction('[Patients Favorite] Add', props<Patient | Order>());
+export const actionFavoritesLoad = createAction('[Favorites] Load');
 
-export const actionPatientsFavoriteRemove = createAction('[Patients Favorite] Remove', props<Patient | Order>());
+export const actionFavoritesLoadSuccess = createAction(
+  '[Favorites] Load Success',
+  props<{favorites: Favorite[]; count: number}>(),
+);
+
+export const actionFavoritesLoadFailure = createAction(
+  '[Favorites] Load Failure',
+  props<{error: Error | HttpErrorResponse}>(),
+);
+
+export const actionFavoritesAdd = createAction(
+  '[Favorites] Add',
+  props<{favorite: Pick<Favorite, 'entityType' | 'entity'>}>(),
+);
+
+export const actionFavoritesRemove = createAction('[Favorites] Remove', props<{favorite: Favorite}>());

@@ -3,17 +3,18 @@ import {Order} from './order.model';
 
 interface FavoriteBase {
   id: string;
-  type: FavoriteType;
+  entityType: FavoriteType;
+  entity: Patient | Order;
 }
 
 interface FavoritePatient extends FavoriteBase {
-  type: FavoriteType.Patient;
-  data: Patient;
+  entityType: FavoriteType.Patient;
+  entity: Patient;
 }
 
 interface FavoriteOrder extends FavoriteBase {
-  type: FavoriteType.Order;
-  data: Order;
+  entityType: FavoriteType.Order;
+  entity: Order;
 }
 
 export type Favorite = FavoritePatient | FavoriteOrder;

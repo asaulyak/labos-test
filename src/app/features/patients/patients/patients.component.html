@@ -16,29 +16,29 @@
         <ng-container *ngIf="status !== asyncReadyStatuses.Idle && status !== asyncReadyStatuses.Loading">
           <table mat-table [dataSource]="patients$" class="mat-elevation-z8">
             <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef>{{ 'stms.orders.patients.name' | translate }}</th>
+              <th mat-header-cell *matHeaderCellDef>{{ 'stms.patients.grid.name' | translate }}</th>
               <td mat-cell *matCellDef="let element">{{ element.fullName | orDefault }}</td>
             </ng-container>
 
             <ng-container matColumnDef="code">
-              <th mat-header-cell *matHeaderCellDef>{{ 'stms.orders.patients.code' | translate }}</th>
+              <th mat-header-cell *matHeaderCellDef>{{ 'stms.patients.grid.code' | translate }}</th>
               <td mat-cell *matCellDef="let element">{{ element.code | orDefault }}</td>
             </ng-container>
 
             <ng-container matColumnDef="age">
-              <th mat-header-cell *matHeaderCellDef>{{ 'stms.orders.patients.age' | translate }}</th>
+              <th mat-header-cell *matHeaderCellDef>{{ 'stms.patients.grid.age' | translate }}</th>
               <td mat-cell *matCellDef="let element">{{ element.birthDate?.dateTime | age }}</td>
             </ng-container>
 
             <ng-container matColumnDef="active">
-              <th mat-header-cell *matHeaderCellDef>{{ 'stms.orders.patients.active' | translate }}</th>
+              <th mat-header-cell *matHeaderCellDef>{{ 'stms.patients.grid.active' | translate }}</th>
               <td mat-cell *matCellDef="let element">{{ !element.inactive | orDefault }}</td>
             </ng-container>
 
             <ng-container matColumnDef="actions">
-              <th mat-header-cell *matHeaderCellDef>{{ 'stms.orders.patients.actions' | translate }}</th>
+              <th mat-header-cell *matHeaderCellDef>{{ 'stms.patients.grid.actions' | translate }}</th>
               <td mat-cell *matCellDef="let element">
-                <button mat-mini-fab color="accent">
+                <button mat-mini-fab color="accent" (click)="onAddToFavoritesClick(element)">
                   <mat-icon><fa-icon icon="heart" color="accent"></fa-icon></mat-icon>
                 </button>
               </td>

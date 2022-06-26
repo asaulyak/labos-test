@@ -1,0 +1,25 @@
+:host {
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .content {
+    margin: 10px 0;
+
+    table {
+      width: 100%;
+
+      .mat-row-empty {
+        font-weight: bold;
+      }
+    }
+
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

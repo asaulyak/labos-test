@@ -6,7 +6,9 @@ import {State} from '../../../core/settings/settings.model';
 import {selectPatients, selectPatientsStatus} from '../../../core/patients/patients.selectors';
 import {actionPatientsLoadPatients} from '../../../core/patients/patients.actions';
 import {Patient} from '../../../shared/models/patient.model';
-import {OrdersAsyncReadyStatus} from '../../../core/orders/orders.model';
+import {actionFavoritesAdd} from '../../../core/favorites/favorites.actions';
+import {FavoriteType} from '../../../shared/models/favorite.model';
+import {PatientsAsyncReadyStatus} from '../../../core/patients/patients.model';
 
 @Component({
   selector: 'st-patients',
@@ -18,7 +20,7 @@ export class PatientsComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
   columns = ['name', 'code', 'age', 'active', 'actions'];
-  asyncReadyStatuses = OrdersAsyncReadyStatus;
+  asyncReadyStatuses = PatientsAsyncReadyStatus;
 
   patients$ = this.store.select(selectPatients);
   patientsRenderingStatus$ = this.store.select(selectPatientsStatus);
@@ -31,5 +33,14 @@ export class PatientsComponent implements OnInit {
     this.store.dispatch(actionPatientsLoadPatients());
   }
 
-  onAddToFavoriteClick(patient: Patient) {}
+  onAddToFavoritesClick(patient: Patient) {
+    this.store.dispatch(
+      actionFavoritesAdd({
+        favorite: {
+          entityType: FavoriteType.Patient,
+          entity: patient,
+        },
+      }),
+    );
+  }
 }

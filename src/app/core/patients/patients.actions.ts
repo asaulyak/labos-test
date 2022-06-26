@@ -5,11 +5,11 @@ import {HttpErrorResponse} from '@angular/common/http';
 export const actionPatientsLoadPatients = createAction('[Patients] Load Patients');
 
 export const actionPatientsLoadPatientsSuccess = createAction(
-  '[Patients] Load Patients Success',
+  '[Patients] Load Success',
   props<{patients: Patient[], count: number}>(),
 );
 
 export const actionPatientsLoadPatientsFailure = createAction(
-  '[Patients] Load Patients Failure',
+  '[Patients] Load Failure',
   props<{error: Error | HttpErrorResponse}>(),
 );

@@ -1,5 +1,7 @@
 import {createSelector} from '@ngrx/store';
-import {selectPatientsFavoriteState} from '../core.state';
+import {selectFavoritesState} from '../core.state';
+import {favoritesAdapter} from './favorites.reducer';
 
-export const selectPatientsFavorite = createSelector(selectPatientsFavoriteState, state => state.favorites);
+export const selectFavorites = favoritesAdapter.getSelectors(selectFavoritesState).selectAll;
 
+export const selectFavoritesStatus = createSelector(selectFavoritesState, state => state.status);

@@ -8,6 +8,7 @@
   "stms.menu.login": "Sign in",
   "stms.menu.logout": "Logout",
   "stms.menu.settings": "Settings",
+  "stms.menu.favorites": "Favorites",
 
   "stms.settings.animations.elements": "Navigation page elements slide up",
   "stms.settings.animations.page": "Navigation whole page transition",
@@ -28,12 +29,12 @@
 
   "stms.patients.title": "Patients",
   "stms.patients.get-patients": "Get patients",
-  "stms.orders.patients.name": "Name",
-  "stms.orders.patients.code": "Code",
-  "stms.orders.patients.age": "Age",
-  "stms.orders.patients.active": "Active",
-  "stms.orders.patients.actions": "Actions",
-  "stms.orders.patients.add-to-favorite": "Add to favorite",
+  "stms.patients.grid.name": "Name",
+  "stms.patients.grid.code": "Code",
+  "stms.patients.grid.age": "Age",
+  "stms.patients.grid.active": "Active",
+  "stms.patients.grid.actions": "Actions",
+  "stms.patients.grid.add-to-favorite": "Add to favorite",
 
   "stms.orders.title": "Orders",
   "stms.orders.get-orders": "Get orders",
@@ -43,5 +44,10 @@
   "stms.orders.grid.patient-name": "Patient Name",
   "stms.orders.grid.actions": "Actions",
 
-  "stms.favorites.title": "Favorites"
+  "stms.favorites.title": "Favorites",
+  "stms.favorites.get-favorites": "Get Favorites",
+  "stms.favorites.grid.type": "Type",
+  "stms.favorites.grid.name": "Name",
+  "stms.favorites.grid.actions": "Actions",
+  "stms.favorites.filter": "Filter"
 }

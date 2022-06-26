@@ -5,11 +5,11 @@ import {Order} from '../../shared/models/order.model';
 export const actionOrdersLoad = createAction('[Orders] Load Orders');
 
 export const actionOrdersLoadSuccess = createAction(
-  '[Orders] Load Orders Success',
+  '[Orders] Load Success',
   props<{ orders: Order[], count: number }>()
 );
 
 export const actionOrdersLoadFailure = createAction(
-  '[Orders] Load Orders Failure',
+  '[Orders] Load Failure',
   props<{ error: Error | HttpErrorResponse }>()
 );
