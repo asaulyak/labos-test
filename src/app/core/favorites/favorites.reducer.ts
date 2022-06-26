@@ -13,13 +13,11 @@ import {Patient} from '../../shared/models/patient.model';
 
 export const favoritesAdapter = createEntityAdapter<Favorite>();
 
-export const initialState: FavoritesState = {
-  ids: [],
-  entities: {},
+export const initialState = favoritesAdapter.getInitialState({
   status: FavoritesAsyncReadyStatus.Idle,
   count: 0,
   error: null,
-};
+});
 
 export const composeFavoriteId = (data: Pick<Favorite, 'entityType' | 'entity'>) => {
   let entityId = '';
@@ -45,7 +43,9 @@ const reducer = createReducer(
     }),
   ),
   on(actionFavoritesLoadFailure, (state, {error}) => ({...state, error, status: FavoritesAsyncReadyStatus.Error})),
-  on(actionFavoritesAdd, (state, {favorite}) => favoritesAdapter.addOne({id: composeFavoriteId(favorite), ...favorite}, state)),
+  on(actionFavoritesAdd, (state, {favorite}) =>
+    favoritesAdapter.addOne({id: composeFavoriteId(favorite), ...favorite}, state),
+  ),
   on(actionFavoritesRemove, (state, {favorite}) => favoritesAdapter.removeOne(favorite.id, state)),
 );
 

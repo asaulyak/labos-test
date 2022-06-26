@@ -12,13 +12,11 @@ export const patientsAdapter = createEntityAdapter<Patient>({
   selectId: patient => patient.code, // Assuming code exists and is unique
 });
 
-export const initialState: PatientsState = {
-  ids: [],
-  entities: {},
+export const initialState: PatientsState = patientsAdapter.getInitialState({
   count: 0,
   error: null,
   status: PatientsAsyncReadyStatus.Idle,
-};
+});
 
 const reducer = createReducer(
   initialState,

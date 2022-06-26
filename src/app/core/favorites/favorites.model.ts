@@ -8,7 +8,7 @@ export interface FavoritesState extends EntityState<Favorite> {
   error: Error | HttpErrorResponse | null;
 }
 
-export enum FavoritesAsyncReadyStatus { // TODO: Move to common
+export enum FavoritesAsyncReadyStatus {
   Idle = 'idle',
   Loading = 'loading',
   Success = 'success',

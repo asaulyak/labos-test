@@ -31,9 +31,7 @@ export class OrdersComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit() {
-    this.orders$ = this.store.select(selectOrders);
-    this.ordersAsyncStatus$ = this.store.select(selectOrdersStatus); // TODO: Merge selectors or not
-    this.favoriteEntities$ = this.store.select(selectFavoritesEntities);
+    this.defineSelectors();
   }
 
   onGetOrdersClick() {
@@ -50,5 +48,11 @@ export class OrdersComponent implements OnInit {
         },
       }),
     );
+  }
+
+  private defineSelectors() {
+    this.orders$ = this.store.select(selectOrders);
+    this.ordersAsyncStatus$ = this.store.select(selectOrdersStatus);
+    this.favoriteEntities$ = this.store.select(selectFavoritesEntities);
   }
 }

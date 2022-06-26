@@ -8,13 +8,11 @@ export const ordersAdapter = createEntityAdapter<Order>({
   selectId: order => order.identifier, // Assuming identifier exists and is unique
 });
 
-export const initialState: OrdersState = {
+export const initialState = ordersAdapter.getInitialState({
   error: null,
   status: OrdersAsyncReadyStatus.Idle,
   count: 0,
-  ids: [],
-  entities: {},
-};
+});
 
 const reducer = createReducer(
   initialState,

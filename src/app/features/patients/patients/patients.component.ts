@@ -6,7 +6,7 @@ import {State} from '../../../core/settings/settings.model';
 import {selectPatients, selectPatientsStatus} from '../../../core/patients/patients.selectors';
 import {actionPatientsLoadPatients} from '../../../core/patients/patients.actions';
 import {Patient} from '../../../shared/models/patient.model';
-import {actionFavoritesAdd} from '../../../core/favorites/favorites.actions';
+import {actionFavoritesAdd, actionFavoritesLoad} from '../../../core/favorites/favorites.actions';
 import {Favorite, FavoriteType} from '../../../shared/models/favorite.model';
 import {PatientsAsyncReadyStatus} from '../../../core/patients/patients.model';
 import {Observable} from 'rxjs';
@@ -38,6 +38,7 @@ export class PatientsComponent implements OnInit {
 
   onGetPatientsClick() {
     this.store.dispatch(actionPatientsLoadPatients());
+    this.store.dispatch(actionFavoritesLoad());
   }
 
   onAddToFavoritesClick(patient: Patient) {

@@ -28,7 +28,24 @@ export class FavoritesComponent implements OnInit {
 
   constructor(private store: Store<State>) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.defineSelectors();
+  }
+
+  onGetFavoritesClick() {
+    this.store.dispatch(actionFavoritesLoad());
+  }
+
+  onFilterQueryChange(event: Event) {
+    // @ts-ignore: value exists here
+    this.filterQueryChange$.next(event.target.value);
+  }
+
+  onRemoveFromFavoritesClick(favorite: Favorite) {
+    this.store.dispatch(actionFavoritesRemove({favorite}));
+  }
+
+  private defineSelectors() {
     this.favorites$ = combineLatest([
       this.store.select(selectFavorites),
       this.filterQueryChange$.pipe(debounceTime(200)),
@@ -42,7 +59,7 @@ export class FavoritesComponent implements OnInit {
 
         return favorites.filter(item => {
           if (item.entityType === FavoriteType.Patient) {
-            // Assume firstName is a string
+            // Assuming firstName is a string
             return (item.entity.firstName as string | undefined)?.toLowerCase().includes(queryClean);
           } else if (item.entityType === FavoriteType.Order) {
             return item.entity.orderName?.toLowerCase().includes(queryClean);
@@ -54,19 +71,5 @@ export class FavoritesComponent implements OnInit {
     );
 
     this.favoriteAsyncStatus$ = this.store.select(selectFavoritesStatus);
-  }
-
-  onGetFavoritesClick() {
-    this.store.dispatch(actionFavoritesLoad());
-  }
-
-  onFilterQueryChange(event: Event) {
-    // TODO: Fix
-    // @ts-ignore
-    this.filterQueryChange$.next(event.target.value);
-  }
-
-  onRemoveFromFavoritesClick(favorite: Favorite) {
-    this.store.dispatch(actionFavoritesRemove({favorite}));
   }
 }
