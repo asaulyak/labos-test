@@ -6,9 +6,10 @@ import {SharedModule} from '../../shared/shared.module';
 import {PatientsRoutingModule} from './patients-routing.module';
 import {PatientsComponent} from './patients/patients.component';
 import {MatTableModule} from '@angular/material/table';
+import { AddedToFavoritesPipe } from './patients/added-to-favorites.pipe';
 
 @NgModule({
-  declarations: [PatientsComponent],
+  declarations: [PatientsComponent, AddedToFavoritesPipe],
   imports: [CommonModule, SharedModule, PatientsRoutingModule, MatTableModule],
   providers: []
 })

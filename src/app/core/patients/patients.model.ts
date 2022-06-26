@@ -1,8 +1,8 @@
 import {Patient} from '../../shared/models/patient.model';
 import {HttpErrorResponse} from '@angular/common/http';
+import {EntityState} from '@ngrx/entity';
 
-export interface PatientsState {
-  patients: Patient[];
+export interface PatientsState extends EntityState<Patient>{
   count: number;
   error: Error | HttpErrorResponse | null;
   status: PatientsAsyncReadyStatus;

@@ -49,6 +49,7 @@ import {BigInputComponent} from './components/big-input/big-input/big-input.comp
 import {BigInputActionComponent} from './components/big-input/big-input-action/big-input-action.component';
 import {RtlSupportDirective} from './directives/rtl-support/rtl-support.directive';
 import {PipesModule} from './pipes/pipes.module';
+import { FavoritesButtonComponent } from './components/favorites-button/favorites-button.component';
 
 @NgModule({
   imports: [
@@ -77,7 +78,7 @@ import {PipesModule} from './pipes/pipes.module';
 
     PipesModule,
   ],
-  declarations: [BigInputComponent, BigInputActionComponent, RtlSupportDirective],
+  declarations: [BigInputComponent, BigInputActionComponent, RtlSupportDirective, FavoritesButtonComponent],
   exports: [
     CommonModule,
     FormsModule,
@@ -109,6 +110,7 @@ import {PipesModule} from './pipes/pipes.module';
     BigInputComponent,
     BigInputActionComponent,
     RtlSupportDirective,
+    FavoritesButtonComponent,
 
     PipesModule,
   ],

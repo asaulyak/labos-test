@@ -21,7 +21,7 @@ export const initialState: FavoritesState = {
   error: null,
 };
 
-const composeId = (data: Pick<Favorite, 'entityType' | 'entity'>) => {
+export const composeFavoriteId = (data: Pick<Favorite, 'entityType' | 'entity'>) => {
   let entityId = '';
 
   if (data.entityType === FavoriteType.Patient) {
@@ -45,7 +45,7 @@ const reducer = createReducer(
     }),
   ),
   on(actionFavoritesLoadFailure, (state, {error}) => ({...state, error, status: FavoritesAsyncReadyStatus.Error})),
-  on(actionFavoritesAdd, (state, {favorite}) => favoritesAdapter.addOne({id: composeId(favorite), ...favorite}, state)),
+  on(actionFavoritesAdd, (state, {favorite}) => favoritesAdapter.addOne({id: composeFavoriteId(favorite), ...favorite}, state)),
   on(actionFavoritesRemove, (state, {favorite}) => favoritesAdapter.removeOne(favorite.id, state)),
 );
 

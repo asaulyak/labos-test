@@ -6,9 +6,10 @@ import { SharedModule } from "../../shared/shared.module";
 import { OrdersComponent } from "./orders/orders.component";
 import { OrdersRoutingModule } from "./orders-routing.module";
 import {MatTableModule} from '@angular/material/table';
+import { AddedToFavoritesPipe } from './orders/added-to-favorites.pipe';
 
 @NgModule({
-  declarations: [OrdersComponent],
+  declarations: [OrdersComponent, AddedToFavoritesPipe],
   imports: [CommonModule, SharedModule, OrdersRoutingModule, MatTableModule]
 })
 export class OrdersModule {}

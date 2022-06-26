@@ -5,7 +5,7 @@ import {Action, createReducer, on} from '@ngrx/store';
 import {actionOrdersLoad, actionOrdersLoadFailure, actionOrdersLoadSuccess} from './orders.actions';
 
 export const ordersAdapter = createEntityAdapter<Order>({
-  selectId: order => order.identifier, // Assume identifier exists and is unique
+  selectId: order => order.identifier, // Assuming identifier exists and is unique
 });
 
 export const initialState: OrdersState = {
